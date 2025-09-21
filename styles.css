@@ -1,0 +1,570 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    user-select: none;
+}
+
+/* Main Container */
+.main-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+}
+
+/* Logo Section */
+.logo-section {
+    text-align: center;
+    margin-bottom: 20px;
+    z-index: 10;
+}
+
+.main-logo {
+    width: 300px;
+    height: auto;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Title Section */
+.title-section {
+    text-align: center;
+    margin-bottom: 40px;
+    z-index: 10;
+}
+
+.main-title {
+    font-size: 4rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Game Area */
+.game-area {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.instruction {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-weight: 400;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Pocket Design */
+.pocket {
+    width: 200px;
+    height: 250px;
+    background: linear-gradient(145deg, #2c3e50, #34495e);
+    border-radius: 0 0 50px 50px;
+    position: relative;
+    z-index: 15;
+    box-shadow: 
+        inset 0 5px 15px rgba(0, 0, 0, 0.3),
+        0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.pocket.hover {
+    transform: scale(1.05);
+    box-shadow: 
+        inset 0 5px 15px rgba(0, 0, 0, 0.3),
+        0 15px 40px rgba(0, 0, 0, 0.6),
+        0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.pocket.success-background .pocket-inside {
+    background-image: url('Duck.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 
+        inset 0 10px 20px rgba(0, 0, 0, 0.3),
+        inset 0 0 30px rgba(255, 215, 0, 0.2);
+    animation: pocketInsideGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pocketInsideGlow {
+    0% {
+        box-shadow: 
+            inset 0 10px 20px rgba(0, 0, 0, 0.3),
+            inset 0 0 30px rgba(255, 215, 0, 0.2);
+    }
+    100% {
+        box-shadow: 
+            inset 0 10px 20px rgba(0, 0, 0, 0.2),
+            inset 0 0 40px rgba(255, 215, 0, 0.4);
+    }
+}
+
+.pocket-opening {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    right: 10px;
+    height: 20px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.3), transparent);
+    border-radius: 10px;
+}
+
+.pocket-inside {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    background: linear-gradient(180deg, #1a252f, #2c3e50);
+    border-radius: 0 0 40px 40px;
+    box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Duck */
+.duck-container {
+    position: absolute;
+    left: calc(50% + 150px);
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: grab;
+    z-index: 20;
+}
+
+.duck-container.dragging {
+    cursor: grabbing;
+    z-index: 30;
+}
+
+.duck {
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.duck.success {
+    width: 270px;
+    height: 270px;
+    animation: none;
+}
+
+.duck:hover {
+    transform: scale(1.1);
+}
+
+.duck-container.dragging .duck {
+    transform: scale(1.2) rotate(5deg);
+    animation: none;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Success State */
+.success-state {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+    backdrop-filter: blur(10px);
+}
+
+.success-state.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.banner-text {
+    font-size: 4rem;
+    font-weight: 600;
+    color: #FFD700;
+    text-align: center;
+    animation: bannerSlide 2s ease-in-out infinite alternate;
+    text-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.6),
+        0 0 30px rgba(255, 215, 0, 0.4);
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: bannerSlide 2s ease-in-out infinite alternate, gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes bannerSlide {
+    0% {
+        transform: translateX(-100vw) scale(0.8);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100vw) scale(0.8);
+        opacity: 0.7;
+    }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.reset-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(180deg);
+}
+
+.success-actions {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    animation: slideUp 0.8s ease-out 0.8s both;
+    z-index: 10;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 120px;
+}
+
+.buy-btn {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.buy-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.6);
+}
+
+.twitter-btn {
+    background: linear-gradient(135deg, #1DA1F2, #0d8bd9);
+    color: white;
+    box-shadow: 0 5px 15px rgba(29, 161, 242, 0.4);
+}
+
+.twitter-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(29, 161, 242, 0.6);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateX(-50%) translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Floating Coins */
+.floating-coins {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.coin {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 2rem;
+    font-weight: bold;
+    animation: floatCoin 8s linear infinite;
+}
+
+.coin:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.coin:nth-child(2) {
+    left: 30%;
+    animation-delay: 2s;
+}
+
+.coin:nth-child(3) {
+    left: 50%;
+    animation-delay: 4s;
+}
+
+.coin:nth-child(4) {
+    left: 70%;
+    animation-delay: 6s;
+}
+
+.coin:nth-child(5) {
+    left: 90%;
+    animation-delay: 1s;
+}
+
+@keyframes floatCoin {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Minimal Footer */
+.minimal-footer {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+}
+
+.social {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.social:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-logo {
+        width: 250px;
+    }
+    
+    .main-title {
+        font-size: 3rem;
+    }
+    
+    .game-area {
+        max-width: 90%;
+        height: 350px;
+    }
+    
+    .pocket {
+        width: 150px;
+        height: 200px;
+    }
+    
+    .duck {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .duck-container {
+        left: calc(50% + 125px);
+    }
+    
+    .banner-text {
+        font-size: 2.5rem;
+    }
+    
+    .success-actions {
+        bottom: 40px;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .btn {
+        font-size: 0.9rem;
+        padding: 12px 25px;
+        min-width: 100px;
+    }
+    
+    .minimal-footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-logo {
+        width: 200px;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .pocket {
+        width: 120px;
+        height: 160px;
+    }
+    
+    .duck {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .instruction {
+        font-size: 0.9rem;
+        top: -40px;
+    }
+    
+    .banner-text {
+        font-size: 2rem;
+    }
+    
+    .success-actions {
+        bottom: 30px;
+    }
+    
+    .btn {
+        font-size: 0.8rem;
+        padding: 10px 20px;
+        min-width: 90px;
+    }
+}
+
+/* Special Effects */
+.duck-in-pocket {
+    animation: duckSlideIn 0.8s ease-out;
+}
+
+@keyframes duckSlideIn {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(50px) scale(0.6);
+        opacity: 0.3;
+    }
+}
+
+.pocket-success {
+    animation: pocketGlow 0.5s ease-out;
+}
+
+@keyframes pocketGlow {
+    0% {
+        box-shadow: 
+            inset 0 5px 15px rgba(0, 0, 0, 0.3),
+            0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    50% {
+        box-shadow: 
+            inset 0 5px 15px rgba(0, 0, 0, 0.3),
+            0 10px 30px rgba(0, 0, 0, 0.4),
+            0 0 30px rgba(76, 175, 80, 0.8);
+    }
+    100% {
+        box-shadow: 
+            inset 0 5px 15px rgba(0, 0, 0, 0.3),
+            0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duck in Pocket</title>
+    <meta name="description" content="Duck in Pocket - $DIP memecoin. Help put the duck in the pocket!">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="Duck in Pocket - $DIP">
+    <meta property="og:description" content="Duck in Pocket - $DIP memecoin. Help put the duck in the pocket!">
+    <meta property="og:image" content="Duck.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="">
+    <meta property="twitter:title" content="Duck in Pocket - $DIP">
+    <meta property="twitter:description" content="Duck in Pocket - $DIP memecoin. Help put the duck in the pocket!">
+    <meta property="twitter:image" content="Duck.png">
+    
+    <!-- Additional SEO -->
+    <meta name="keywords" content="Duck in Pocket, $DIP, memecoin, crypto, duck, pocket, interactive">
+    <meta name="author" content="Duck in Pocket">
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    
+    <!-- Configuration -->
+    <script>
+        // Easy to update URLs - Change these as needed
+        const PUMPFUN_URL = 'https://pump.fun/board'; // Replace with actual PumpFun URL
+        const TWITTER_COMMUNITY_URL = 'https://x.com/i/communities/1969842123831742951';
+    </script>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Interactive Section -->
+    <main class="main-container">
+        <!-- Logo -->
+        <div class="logo-section">
+            <img src="DIP.png" alt="Duck in Pocket Logo" class="main-logo">
+        </div>
+
+        <!-- Title -->
+        <div class="title-section">
+            <h1 class="main-title">Help put the Duck in the pocket!</h1>
+        </div>
+
+        <!-- Interactive Game Area -->
+        <div class="game-area">
+            <!-- Pocket -->
+            <div class="pocket" id="pocket">
+                <div class="pocket-opening"></div>
+                <div class="pocket-inside"></div>
+            </div>
+            
+            <!-- Draggable Duck -->
+            <div class="duck-container" id="duckContainer">
+                <img src="babyduck.png" alt="Baby Duck" class="duck" id="duck" draggable="true">
+            </div>
+            
+            <div class="instruction" id="instruction">
+                Drag the duck into the pocket
+            </div>
+        </div>
+
+        <!-- Success State -->
+        <div class="success-state" id="successState">
+            <div class="banner-text">The pocket stays on!</div>
+            <div class="success-actions">
+                <button class="btn buy-btn" onclick="window.open(PUMPFUN_URL, '_blank')">Buy the $DIP</button>
+                <button class="btn twitter-btn" onclick="window.open(TWITTER_COMMUNITY_URL, '_blank')">X</button>
+            </div>
+            <button class="reset-btn" id="resetBtn">↻</button>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-coins">
+            <div class="coin">$</div>
+            <div class="coin">$</div>
+            <div class="coin">$</div>
+            <div class="coin">$</div>
+            <div class="coin">$</div>
+        </div>
+
+        <!-- Minimal Footer -->
+        <footer class="minimal-footer">
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
